@@ -10,7 +10,7 @@ void fakultaet() {
 
     cout << "Gib die Zahl n ein deren Fakultät berechnet werden soll: " << endl;
     cin >> userInp;
-    long long fak = 1;
+    unsigned long long fak = 1;
     for (; userInp > 1; userInp--) fak *=userInp;
     cout << "Die Fakultät ist: " << fak << endl;
 }
@@ -117,10 +117,9 @@ void menue () {
         case 0:
             exit(0);
     }
-    cout << endl << endl;
+    cout << endl;
     menue();
 }
-
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
