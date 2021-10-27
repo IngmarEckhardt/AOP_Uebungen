@@ -4,11 +4,10 @@
 #include <math.h>
 
 using namespace std;
-
+int userInp;
 
 void fakultaet() {
 
-    int userInp;
     cout << "Gib die Zahl n ein deren Fakultät berechnet werden soll: " << endl;
     cin >> userInp;
     long long fak = 1;
@@ -69,13 +68,36 @@ void nullstellen() {
     }
 }
 
+void fibonacci() {
+
+    int fib1=0, fib2=1, fibResult;
+    cout << "Es werden die Fibonacci-Zahlen ausgegeben, wähle wieviele davon ausgegeben werden sollen:" << endl;
+    cin >> userInp;
+    for (int i =1; i <= userInp; i++) {
+        if (i==1){
+            cout << fib1 << ", ";
+            continue;
+        }
+        if (i==2) {
+            cout << fib2 << ", ";
+            continue;
+        }
+        fibResult = fib1 + fib2;
+        fib1 = fib2;
+        fib2 = fibResult;
+        cout << fibResult << ", ";
+    }
+
+
+}
+
 void menue () {
     int menu;
     cout << "Wähle das Program welches du ausführen möchtest" << endl;
     cout << setw(51) << "Fakultät (1)" << endl;
     cout << setw(50) << "Multiplikationstabelle (2)" << endl;
     cout << setw(50) << "Nullstellenberechnung quadrat Funktion (3)" << endl;
-    cout << setw(50) << "Fibonacci-Zahlen" << endl;
+    cout << setw(50) << "Fibonacci-Zahlen (4)" << endl;
     cout << setw(50) << "Programm beenden (0)" << endl;
     cin >> menu;
 
@@ -89,9 +111,13 @@ void menue () {
         case 3:
             nullstellen();
             break;
+        case 4:
+            fibonacci();
+            break;
         case 0:
             exit(0);
     }
+    cout << endl << endl;
     menue();
 }
 
