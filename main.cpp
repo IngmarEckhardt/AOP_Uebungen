@@ -87,8 +87,6 @@ void fibonacci() {
         fib2 = fibResult;
         cout << fibResult << ", ";
     }
-
-
 }
 
 void menue () {
