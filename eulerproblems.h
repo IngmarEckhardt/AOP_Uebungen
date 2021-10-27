@@ -21,7 +21,7 @@ void eulerOne() {
         product = 3 * i;
         sum += product;
     }
-    cout << "Die Summe beträgt: " << sum << endl;
+    cout << "Die Summe aller Zahlen bis 1000 die durch 3 oder 5 teilbar sind beträgt: " << sum << endl;
 }
 
 void eulerTwo() {
@@ -33,7 +33,7 @@ void eulerTwo() {
         fib2 = fibResult;
         if (fibResult % 2 == 0) sum += fibResult;
     } while (fibResult <= 4'000'000);
-    cout << "Die Summe beträgt: " << sum << endl;
+    cout << "Die Summe der geraden Fibonacci-Zahlen kleiner 4.000.000 beträgt: " << sum << endl;
 }
 
 void eulerThree() {
@@ -61,14 +61,14 @@ int reverse_number(int num) {
 }
 
 void eulerFour() {
-    int sum, step;
+    long int sum, step;
     for (int firstNumber=999; firstNumber >900; firstNumber--) {
         for (int secondNumber = 999; secondNumber>900; secondNumber--) {
             step = firstNumber * secondNumber;
             if ((step > sum) && (step == reverse_number(step))) sum = step;
         }
     }
-    cout << "Das größte Palindrom ist: " << sum << endl;
+    cout << "Das größte Palindrom zweier dreistelliger Faktoren ist: " << sum << endl;
 }
 
 namespace euler {
@@ -76,11 +76,11 @@ namespace euler {
         int menu;
 
         cout << "Wähle das Euler-Problem" << endl;
-        cout << setw(51) << "Problem Eins (1)" << endl;
-        cout << setw(51) << "Problem Zwei (2)" << endl;
-        cout << setw(51) << "Problem Drei (3)" << endl;
-        cout << setw(51) << "Problem Vier (4)" << endl;
-        cout << setw(50) << "Zurück zum Hauptmenu (0)" << endl;
+        cout << setw(71) << "Problem Eins -Summe durch 3 u. 5 teilbarer Zahlen (1)" << endl;
+        cout << setw(71) << "Problem Zwei - Summe gerader Fibonacci-Zahlen (2)" << endl;
+        cout << setw(71) << "Problem Drei - Primfaktorenzerlegung (3)" << endl;
+        cout << setw(73) << "Problem Vier - das größte Palindrom (4)" << endl;
+        cout << setw(72) << "Zurück zum Hauptmenu (0)" << endl;
         cin >> menu;
 
         switch (menu) {
