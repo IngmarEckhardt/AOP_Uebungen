@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
+#include "eulerproblems.h"
 
 #ifdef _WIN32 
 #include <Windows.h>
@@ -9,14 +10,17 @@
 #define mSetConsoleOutputCP(x) 
 #endif // _WIN32
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::setw;
 int userInp;
 
 void fakultaet() {
+    unsigned long long fak = 1;
 
     cout << "Gib die Zahl n ein deren Fakultät berechnet werden soll: " << endl;
     cin >> userInp;
-    unsigned long long fak = 1;
     for (; userInp > 1; userInp--) fak *=userInp;
     cout << "Die Fakultät ist: " << fak << endl;
 }
@@ -33,7 +37,7 @@ void multiplicationTable() {
 }
 
 void nullstellen() {
-    double a, b, c, diskrimante, realNull1, realNull2, imagNull;
+    double a, b, c, diskriminante, realNull1, realNull2, imagNull;
 
     cout << "Nullstellenberechnung der Funktion ax²+bx+c" << endl;
     cout << "(Dezimalbrüche mit '.' trennen)" << endl;
@@ -44,7 +48,7 @@ void nullstellen() {
     cout << "Gib den Parameter c ein: " << endl;
     cin >> c;
 
-    diskrimante = pow(b,2)-4*a*c;
+    diskriminante = pow(b, 2) - 4 * a * c;
 
     if (a == 0 && b == 0 && c == 0) {
         cout << "Alle Werte von x sind eine Nullstelle, es gibt unendlich viele Nullstellen" << endl;
@@ -56,18 +60,18 @@ void nullstellen() {
         realNull1 = -c/b;
         cout << "Die Nullstelle der Funktion liegt bei x = " << realNull1 << endl;
     }
-    else if (diskrimante == 0) {
+    else if (diskriminante == 0) {
         realNull1 = -b/(2*a);
         cout << "Die Nullstelle der Funktion liegt bei x = " << realNull1 << endl;
     }
-    else if (diskrimante > 0) {
-        realNull1 = (-b+sqrt(diskrimante))/(2*a);
-        realNull2 = (-b-sqrt(diskrimante))/(2*a);
+    else if (diskriminante > 0) {
+        realNull1 = (-b+sqrt(diskriminante)) / (2 * a);
+        realNull2 = (-b-sqrt(diskriminante)) / (2 * a);
         cout << "Die Nullstellen der Funktion liegen bei x1 = " << realNull1 << "und x2 = " << realNull2 << endl;
     }
     else {
         realNull1 = -b/(2*a);
-        imagNull = sqrt(abs(diskrimante))/(2*a);
+        imagNull = sqrt(abs(diskriminante)) / (2 * a);
         cout << "Die Nullstellen der Funktion liegen im Bereich der komplexen Zahlen." << endl;
         cout << "x1 = " << realNull1 << " + " << imagNull << "i" << endl;
         cout << "x2 = " << realNull1 << " - " << imagNull << "i" << endl;
@@ -75,8 +79,8 @@ void nullstellen() {
 }
 
 void fibonacci() {
+    unsigned long long fib1=0, fib2=1, fibResult;
 
-    int fib1=0, fib2=1, fibResult;
     cout << "Es werden die Fibonacci-Zahlen ausgegeben, wähle wieviele davon ausgegeben werden sollen:" << endl;
     cin >> userInp;
     for (int i =1; i <= userInp; i++) {
@@ -97,11 +101,13 @@ void fibonacci() {
 
 void menue () {
     int menu;
+
     cout << "Wähle das Program welches du ausführen möchtest" << endl;
     cout << setw(51) << "Fakultät (1)" << endl;
     cout << setw(50) << "Multiplikationstabelle (2)" << endl;
     cout << setw(50) << "Nullstellenberechnung quadrat Funktion (3)" << endl;
     cout << setw(50) << "Fibonacci-Zahlen (4)" << endl;
+    cout << setw(51) << "Euler_Problems(keine AOP-Übungen) (9)" << endl;
     cout << setw(50) << "Programm beenden (0)" << endl;
     cin >> menu;
 
@@ -118,8 +124,13 @@ void menue () {
         case 4:
             fibonacci();
             break;
+        case 9:
+            euler::menu();
+            break;
         case 0:
             exit(0);
+        default:
+            ;
     }
     cout << endl;
     menue();
