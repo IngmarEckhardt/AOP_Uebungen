@@ -1,7 +1,13 @@
 #include <iostream>
 #include <iomanip>
-#include <Windows.h>
 #include <math.h>
+
+#ifdef _WIN32 
+#include <Windows.h>
+#define mSetConsoleOutputCP(x) SetConsoleOutputCP(x)
+#else
+#define mSetConsoleOutputCP(x) 
+#endif // _WIN32
 
 using namespace std;
 int userInp;
@@ -120,6 +126,6 @@ void menue () {
 }
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
+    mSetConsoleOutputCP(CP_UTF8);
     menue();
 }
