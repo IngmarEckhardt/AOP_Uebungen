@@ -130,7 +130,7 @@ void menue () {
         case 0:
             exit(0);
         default:
-            ;
+            exit(-1);
     }
     cout << endl;
     menue();
