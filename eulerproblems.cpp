@@ -175,14 +175,14 @@ unsigned long long int eulerEight()
     return product;
 }
 
-short int eulerNine()
+bool eulerNine()
 {
     bool flag = false;
-    for (short int c = 500; !flag && c > 0; c--)
+    for (short int c = 500; !flag; c--)
     {
-        for (short int b = 400; !flag && b > 0; b--)
+        for (short int b = 499; !flag && b >0; b--)
         {
-            for (short int a = 300; !flag && a > 0; a--)
+            for (short int a = (b-1); !flag && a > 0; a--)
             {
                 if (((a + b + c) == 1000) && ((c * c) == (a * a) + (b * b)))
                 {
