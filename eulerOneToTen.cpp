@@ -2,12 +2,12 @@
 #include "constants.h"
 #include <iostream>
 #include <iomanip>
-#include <math.h>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::setw;
+
 
 long int eulerOne()
 {
@@ -77,8 +77,8 @@ int reverse_number(int num)
     while (num != 0)
     {
         int digit = num % base;                 //teilt die Ausgangszahl durch 10 und merkt sich den Rest
-        reversed = reversed * base +
-                   digit;     //multipliziert die Zwischenwerte der umgedrehten Zahl mit 10 und hängt den Rest an
+        //multipliziert die Zwischenwerte der umgedrehten Zahl mit 10 und hängt den Rest an
+        reversed = reversed * base + digit;     //multipliziert die Zwischenwerte der umgedrehten Zahl mit 10 und hängt den Rest an
         num /= base;                            // Rechnet den Quotienten der Ausgangszahl ganzzahlig und speichert den als Zwischenergebnis
     }
     return reversed;
@@ -134,6 +134,8 @@ unsigned long int eulerSix()
 
 bool isPrime(long int numberToCheck)
 {
+    if (numberToCheck == 1) return false;
+    if (numberToCheck == 2) return true;
     for (long int i = 2; i * i <= numberToCheck; i++)
     {
         if ((numberToCheck % i) == 0)
@@ -180,9 +182,9 @@ bool eulerNine()
     bool flag = false;
     for (short int c = 500; !flag; c--)
     {
-        for (short int b = 499; !flag && b >0; b--)
+        for (unsigned short int b = 499; !flag && b > 0; b--)
         {
-            for (short int a = (b-1); !flag && a > 0; a--)
+            for (unsigned short int a = (b - 1); !flag && a > 0; a--)
             {
                 if (((a + b + c) == 1000) && ((c * c) == (a * a) + (b * b)))
                 {
@@ -196,10 +198,21 @@ bool eulerNine()
     return flag;
 }
 
+unsigned long long eulerTen()
+{
+    unsigned long long sum;
+
+    for (unsigned int i = 2; i < 2'000'000; i++)
+    {
+        if (isPrime(i)) sum += i;
+    }
+    cout << "Die Summe aller Primzahlen bis 2.000.000 ist: " << sum << endl;
+    return sum;
+}
+
 namespace euler
 {
-
-    void menu()
+    void menuOneToTen()
     {
         int menu;
 
@@ -213,51 +226,54 @@ namespace euler
         cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
         cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
         cout << setw(71) << "Problem Neun- Pythagoras Triple (9)" << endl;
-        cout << setw(72) << "Zurück zum Hauptmenu (0)" << endl;
+        cout << setw(71) << "Problem Neun- Pythagoras Triple (10)" << endl;
+        cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
         cin >> menu;
 
         switch (menu)
         {
             case 1:
                 eulerOne();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 2:
                 eulerTwo();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 3:
                 eulerThree();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 4:
                 eulerFour();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 5:
                 eulerFive();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 6:
                 eulerSix();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 7:
                 eulerSeven();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 8:
                 eulerEight();
-                euler::menu();
+                euler::menuOneToTen();
                 break;
             case 9:
                 eulerNine();
-                euler::menu();
+                euler::menuOneToTen();
+                break;
+            case 10:
+                eulerTen();
+                euler::menuOneToTen();
                 break;
             case 0:
                 break;
-            default:
-                euler::menu();
         }
     }
 }

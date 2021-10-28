@@ -3,7 +3,8 @@
 
 
 namespace euler {
-    void menu();
+    void mainMenu();
+    void menuOneToTen();
 }
 
 #endif //AOP_UEBUNGEN_CONNECTOR_H

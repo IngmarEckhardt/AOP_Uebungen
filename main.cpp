@@ -144,7 +144,7 @@ void menue()
             fibonacci();
             break;
         case 9:
-            euler::menu();
+            euler::mainMenu();
             break;
         case 0:
             exit(0);
