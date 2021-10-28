@@ -1,6 +1,5 @@
 #ifndef AOP_UEBUNGEN_CONSTANTS_H
 #define AOP_UEBUNGEN_CONSTANTS_H
-#include <iostream>
 #include <string>
 
 namespace eulerConst

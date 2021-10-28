@@ -50,16 +50,18 @@ long int eulerTwo()
 long int eulerThree()
 {
     cout << "Prime-Factorizing of n = 600851475143" << endl;
-    long long int product{
-            600851475143};        //ausgangswert der Zerlegung, später als Zwischenergebnis zum Merken der Quotienten
-    long int factor;                            //Merkzettel für den größten gefundenen Faktor
-    for (int i = 2; product >
-                    1; i++)
-    {         //erhöht i in jedem Durchlauf um die Primefaktoren zu finden, solange der Quotient nicht eins ist
-        while (product % i ==
-               0)
-        {              //Schleife sorgt dafür dass die For-Schleife dass der aktuelle Primefaktor i mehrfach genutzt wird
-            product /= i;                       //dividiert die Ausgangswert bzw die sich dann ergebenden Quotienten durch den Primefaktor, speichert den Quotienten als Zwischenschritt in Product
+    //ausgangswert der Zerlegung, später als Zwischenergebnis zum Merken der Quotienten
+    long long int product{600851475143};
+    //Merkzettel für den größten gefundenen Faktor
+    long int factor;
+    //erhöht i in jedem Durchlauf um die Primefaktoren zu finden, solange der Quotient nicht eins ist
+    for (int i = 2; product > 1; i++)
+    {
+        //while-Schleife sorgt dafür dass der aktuelle Primefaktor i mehrfach genutzt wird
+        while (product % i == 0)
+        {
+            //dividiert die Ausgangswert bzw die sich dann ergebenden Quotienten durch den Primefaktor, speichert den Quotienten als Zwischenschritt in Product
+            product /= i;
             factor = i;                         //merkt sich den letzten verwendeten Primefactor
         }
     }
@@ -101,18 +103,16 @@ long int eulerFour()
     return product;
 }
 
-long int eulerFive()
+unsigned long int eulerFive()
 {
-    long int product;
+    unsigned long int product;
     int i = 0;
     bool flag = false;
     do
     {
-        i++;
-        product = i * 20;
+        product = ++i * 20;
         if (product % 19 != 0 || product % 18 != 0 || product % 17 != 0 || product % 16 != 0 || product % 15 != 0 ||
-            product % 14 != 0 ||
-            product % 13 != 0 || product % 12 != 0 || product % 11 != 0)
+            product % 14 != 0 || product % 13 != 0 || product % 12 != 0 || product % 11 != 0)
             continue;
         else flag = true;
         cout << "Die kleinste Zahl die ohne Rest durch alle Zahlen von 1 bis 20 teilbar ist, ist: " << product << endl;
@@ -122,14 +122,13 @@ long int eulerFive()
 
 unsigned long int eulerSix()
 {
-    unsigned long int powOfSum, sumOfSquares, difference;
-    unsigned short int digit{100};
-    powOfSum = pow(((pow(digit, 2) + digit) / 2), 2);
-    sumOfSquares = (digit * (digit + 1) * (2 * digit + 2)) / 6;
-    difference = (powOfSum - sumOfSquares);
+    constexpr unsigned short int digit{100};
+    constexpr unsigned long int squareOfSum = (((digit * digit) + digit) * ((digit * digit) + digit) / 4);
+    constexpr unsigned long int sumOfSquares = (digit * (digit + 1) * (2 * digit + 1)) / 6;
+    constexpr unsigned long int difference = (squareOfSum - sumOfSquares);
     cout
             << "Die Differenz zwischen der quadratieren Summe aller Zahlen bis 100 und der Summe der Quadrate dieser Zahlen ist:\n"
-            << (powOfSum - sumOfSquares) << endl;
+            << difference << endl;
     return difference;
 }
 
@@ -166,13 +165,35 @@ unsigned long long int eulerEight()
     for (int start = 0; start + 13 < 1000; start++)
     {
         unsigned long long step = 1;
-        for (unsigned int i = 0; i < 13; i++) {
-            step *= number[start + i]-'0';
+        for (unsigned int i = 0; i < 13; i++)
+        {
+            step *= number[start + i] - '0';
         }
         if (product < step) product = step;
     }
     cout << "Das größte Produkt ist: " << product << endl;
     return product;
+}
+
+short int eulerNine()
+{
+    bool flag = false;
+    for (short int c = 500; !flag && c > 0; c--)
+    {
+        for (short int b = 400; !flag && b > 0; b--)
+        {
+            for (short int a = 300; !flag && a > 0; a--)
+            {
+                if (((a + b + c) == 1000) && ((c * c) == (a * a) + (b * b)))
+                {
+                    cout << "Bedingung: a<b<c; a²+b²=c², a+b+c=1000\n";
+                    cout << "a ist gleich = " << a << "\nb ist gleich = " << b << "\nc ist gleich = " << c << endl;
+                    flag = true;
+                }
+            }
+        }
+    }
+    return flag;
 }
 
 namespace euler
@@ -191,6 +212,7 @@ namespace euler
         cout << setw(71) << "Problem Sechs - Quadratsumme minus summierte Quadrate (6)" << endl;
         cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
         cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
+        cout << setw(71) << "Problem Neun- Pythagoras Triple (9)" << endl;
         cout << setw(72) << "Zurück zum Hauptmenu (0)" << endl;
         cin >> menu;
 
@@ -226,6 +248,10 @@ namespace euler
                 break;
             case 8:
                 eulerEight();
+                euler::menu();
+                break;
+            case 9:
+                eulerNine();
                 euler::menu();
                 break;
             case 0:
