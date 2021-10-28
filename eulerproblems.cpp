@@ -1,13 +1,13 @@
-#ifndef AOP_UEBUNGEN_EULERPROBLEMS_H
-#define AOP_UEBUNGEN_EULERPROBLEMS_H
-
+#include "connector.h"
 #include <iostream>
 #include <iomanip>
+
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::setw;
+
 
 void eulerOne() {
     int product;
@@ -62,20 +62,19 @@ int reverse_number(int num) {
 
 void eulerFour() {
     long int sum, step;
-    for (int firstNumber=999; firstNumber >900; firstNumber--) {
-        for (int secondNumber = 999; secondNumber>900; secondNumber--) {
+    for (int firstNumber = 999; firstNumber > 900; firstNumber--) {
+        for (int secondNumber = 999; secondNumber > 900; secondNumber--) {
             step = firstNumber * secondNumber;
             if ((step > sum) && (step == reverse_number(step))) sum = step;
         }
     }
     cout << "Das größte Palindrom zweier dreistelliger Faktoren ist: " << sum << endl;
 }
-
 namespace euler {
     void menu() {
         int menu;
 
-        cout << "Wähle das Euler-Problem" << endl;
+        cout << "\nWähle das Euler-Problem" << endl;
         cout << setw(71) << "Problem Eins -Summe durch 3 u. 5 teilbarer Zahlen (1)" << endl;
         cout << setw(71) << "Problem Zwei - Summe gerader Fibonacci-Zahlen (2)" << endl;
         cout << setw(71) << "Problem Drei - Primfaktorenzerlegung (3)" << endl;
@@ -107,5 +106,3 @@ namespace euler {
         }
     }
 }
-
-#endif //AOP_UEBUNGEN_EULERPROBLEMS_H

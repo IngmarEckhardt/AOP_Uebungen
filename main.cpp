@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
-#include "eulerproblems.h"
+#include "connector.h"
 
 #ifdef _WIN32 
 #include <Windows.h>

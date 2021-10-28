@@ -3,4 +3,4 @@ project(AOP_Uebungen)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(aol_uebungen main.cpp eulerproblems.h)
+add_executable(aol_uebungen main.cpp connector.h eulerproblems.cpp)
