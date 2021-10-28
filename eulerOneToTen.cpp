@@ -2,6 +2,8 @@
 #include "constants.h"
 #include <iostream>
 #include <iomanip>
+#include <bitset>
+#include <cmath>
 
 using std::cout;
 using std::cin;
@@ -78,7 +80,7 @@ int reverse_number(int num)
     {
         int digit = num % base;                 //teilt die Ausgangszahl durch 10 und merkt sich den Rest
         //multipliziert die Zwischenwerte der umgedrehten Zahl mit 10 und hängt den Rest an
-        reversed = reversed * base + digit;     //multipliziert die Zwischenwerte der umgedrehten Zahl mit 10 und hängt den Rest an
+        reversed = reversed * base + digit;
         num /= base;                            // Rechnet den Quotienten der Ausgangszahl ganzzahlig und speichert den als Zwischenergebnis
     }
     return reversed;
@@ -200,13 +202,46 @@ bool eulerNine()
 
 unsigned long long eulerTen()
 {
-    unsigned long long sum;
+    clock_t eulerTenClock = clock();
+    unsigned long long sum = 2;
 
-    for (unsigned int i = 2; i < 2'000'000; i++)
+    for (unsigned int i = 1; i < 2'000'000; i += 2)
     {
         if (isPrime(i)) sum += i;
     }
-    cout << "Die Summe aller Primzahlen bis 2.000.000 ist: " << sum << endl;
+    eulerTenClock = clock() - eulerTenClock;
+    cout << "Die Summe aller Primzahlen bis 2.000.000 ist: " << sum << endl << "Bruteforce brauchte " << eulerTenClock << " klicks" << endl;
+    return sum;
+}
+
+unsigned long long eulerTenWithEratosthenes()
+{
+    clock_t erasthonesClock = clock();
+    unsigned long long sum = 0;
+
+    std::bitset<2000000> bitVector;
+    bitVector.set();
+    bitVector.set(0, false);
+    bitVector.set(1, false);
+    const int range = sqrt(2'000'000) + 1;
+    for (int i = 2; i < range; i++)
+    {
+        if (!bitVector[i]) continue;
+        int rangeTwo = 1'999'999 / i + 1;
+        for (int j = 2; j < rangeTwo; j++)
+        {
+            bitVector.set(i * j, false);
+        }
+    }
+    for (int k = 0; k < 2000000; k++)
+    {
+        if (bitVector[k])
+        {
+            sum += k;
+        }
+    }
+    erasthonesClock = clock() - erasthonesClock;
+    cout << "Die Summe aller Primzahlen bis 2.000.000 ist: " << sum << "\nEratosthenes brauchte " << erasthonesClock << " klicks" << endl;
     return sum;
 }
 
@@ -226,7 +261,8 @@ namespace euler
         cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
         cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
         cout << setw(71) << "Problem Neun- Pythagoras Triple (9)" << endl;
-        cout << setw(71) << "Problem Neun- Pythagoras Triple (10)" << endl;
+        cout << setw(71) << "Problem Zehn- Summe der Primzahlen bis zur Größe 2Mio (10)" << endl;
+        cout << setw(71) << "Problem Zehn- Summe der Primzahlen, Sieb des Erastothenes (11)" << endl;
         cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
         cin >> menu;
 
@@ -270,6 +306,10 @@ namespace euler
                 break;
             case 10:
                 eulerTen();
+                euler::menuOneToTen();
+                break;
+            case 11:
+                eulerTenWithEratosthenes();
                 euler::menuOneToTen();
                 break;
             case 0:
