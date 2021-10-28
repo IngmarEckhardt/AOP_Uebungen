@@ -1,4 +1,5 @@
 #include "connector.h"
+#include "constants.h"
 #include <iostream>
 #include <iomanip>
 #include <math.h>
@@ -134,7 +135,7 @@ unsigned long int eulerSix()
 
 bool isPrime(long int numberToCheck)
 {
-    for (long int i = 2; i*i <= numberToCheck; i++)
+    for (long int i = 2; i * i <= numberToCheck; i++)
     {
         if ((numberToCheck % i) == 0)
         {
@@ -151,11 +152,27 @@ unsigned long int eulerSeven()
 
     while (countPrimes < 10001)
     {
-        index +=2;
+        index += 2;
         if (isPrime(index)) countPrimes++;
     }
     cout << "Die 10.001te Primzahl ist die: " << index << endl;
     return index;
+}
+
+unsigned long long int eulerEight()
+{
+    std::string number = eulerConst::numberProblem8;
+    unsigned long long product = 0;
+    for (int start = 0; start + 13 < 1000; start++)
+    {
+        unsigned long long step = 1;
+        for (unsigned int i = 0; i < 13; i++) {
+            step *= number[start + i]-'0';
+        }
+        if (product < step) product = step;
+    }
+    cout << "Das größte Produkt ist: " << product << endl;
+    return product;
 }
 
 namespace euler
@@ -173,6 +190,7 @@ namespace euler
         cout << setw(72) << "Problem Fünf - die kleinste teilbare Zahl (5)" << endl;
         cout << setw(71) << "Problem Sechs - Quadratsumme minus summierte Quadrate (6)" << endl;
         cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
+        cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
         cout << setw(72) << "Zurück zum Hauptmenu (0)" << endl;
         cin >> menu;
 
@@ -204,6 +222,10 @@ namespace euler
                 break;
             case 7:
                 eulerSeven();
+                euler::menu();
+                break;
+            case 8:
+                eulerEight();
                 euler::menu();
                 break;
             case 0:
