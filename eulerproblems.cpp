@@ -70,6 +70,19 @@ void eulerFour() {
     }
     cout << "Das größte Palindrom zweier dreistelliger Faktoren ist: " << sum << endl;
 }
+void eulerFive (){
+    long int product, i=0;
+    bool flag = true;
+    do {
+        i++;
+        product = i *20;
+        if (product%19 != 0 || product%18 != 0 || product%17 != 0 || product%16 != 0 || product%15 != 0 || product%14 != 0 ||
+                product%13 != 0 || product%12 != 0 || product%11 != 0) continue;
+        else flag = false;
+        cout << "Die kleinste Zahl die ohne Rest durch alle Zahlen von 1 bis 20 teilbar ist, ist: " << product << endl;
+    } while (flag);
+}
+
 namespace euler {
     void menu() {
         int menu;
@@ -79,6 +92,7 @@ namespace euler {
         cout << setw(71) << "Problem Zwei - Summe gerader Fibonacci-Zahlen (2)" << endl;
         cout << setw(71) << "Problem Drei - Primfaktorenzerlegung (3)" << endl;
         cout << setw(73) << "Problem Vier - das größte Palindrom (4)" << endl;
+        cout << setw(72) << "Problem Fünf - die kleinste teilbare Zahl (5)" << endl;
         cout << setw(72) << "Zurück zum Hauptmenu (0)" << endl;
         cin >> menu;
 
@@ -97,6 +111,10 @@ namespace euler {
                 break;
             case 4:
                 eulerFour();
+                euler::menu();
+                break;
+            case 5:
+                eulerFive();
                 euler::menu();
                 break;
             case 0:
