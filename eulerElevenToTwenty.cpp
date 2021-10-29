@@ -9,7 +9,7 @@ using std::endl;
 using std::setw;
 
 void yieldingPrimesForTestPurposes() {
-    std::vector<unsigned long long int> primes = euler::yieldPrimes();
+    std::vector<unsigned long long int> primes = euler::yield100MioPrimes();
     std::cout << "Es sind " << primes.size() << " Primzahlen in der Liste\n"
                                                 "Die größte Primzahl ist die " << primes.at((primes.size()-1));
 //    std::vector<unsigned int> exponents;

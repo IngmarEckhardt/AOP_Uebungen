@@ -13,11 +13,11 @@ using std::setw;
 
 namespace euler
 {
-    std::vector<unsigned long long int> yieldPrimes()
+    std::vector<unsigned long long int> yield100MioPrimes()
     {
         clock_t erasthonesClock = clock();
 
-        constexpr size_t size {0xFFFFFFFF};
+        constexpr size_t size {0x7FFFFFFF};
 
         std::vector<unsigned long long int> listOfPrimes;
         std::vector<bool> bitVector(size);
