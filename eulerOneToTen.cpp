@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <bitset>
 #include <cmath>
+#include <list>
 
 using std::cout;
 using std::cin;
@@ -214,10 +215,11 @@ unsigned long long eulerTen()
     return sum;
 }
 
-unsigned long long eulerTenWithEratosthenes()
+std::list<int> eulerTenWithEratosthenes()
 {
     clock_t erasthonesClock = clock();
     unsigned long long sum = 0;
+    std::list<int> listOfPrimes;
 
     std::bitset<2000000> bitVector;
     bitVector.set();
@@ -238,11 +240,12 @@ unsigned long long eulerTenWithEratosthenes()
         if (bitVector[k])
         {
             sum += k;
+            listOfPrimes.push_back(k);
         }
     }
     erasthonesClock = clock() - erasthonesClock;
     cout << "Die Summe aller Primzahlen bis 2.000.000 ist: " << sum << "\nEratosthenes brauchte " << erasthonesClock << " klicks" << endl;
-    return sum;
+    return listOfPrimes;
 }
 
 namespace euler
@@ -261,7 +264,7 @@ namespace euler
         cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
         cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
         cout << setw(71) << "Problem Neun- Pythagoras Triple (9)" << endl;
-        cout << setw(71) << "Problem Zehn- Summe der Primzahlen bis zur Größe 2Mio (10)" << endl;
+        cout << setw(73) << "Problem Zehn- Summe der Primzahlen bis zur Größe 2Mio (10)" << endl;
         cout << setw(71) << "Problem Zehn- Summe der Primzahlen, Sieb des Erastothenes (11)" << endl;
         cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
         cin >> menu;

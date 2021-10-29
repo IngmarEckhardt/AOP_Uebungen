@@ -125,7 +125,7 @@ void menue()
     cout << setw(50) << "Multiplikationstabelle (2)" << endl;
     cout << setw(50) << "Nullstellenberechnung quadrat Funktion (3)" << endl;
     cout << setw(50) << "Fibonacci-Zahlen (4)" << endl;
-    cout << setw(51) << "Euler_Problems(keine AOP-Übungen) (9)" << endl;
+    cout << setw(51) << "Euler_Problems(keine AOP-Übungen)&Spielereien (9)" << endl;
     cout << setw(50) << "Programm beenden (0)" << endl;
     cin >> menu;
 
