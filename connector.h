@@ -6,8 +6,9 @@ namespace euler {
     void mainMenu();
     void menuOneToTen();
     void menuElevenToTwenty();
-    std::vector<unsigned long long int> yield1MioPrimes();
+    std::vector<unsigned long long int> yieldPrimes();
     std::vector<unsigned long long int> readPrimes ();
+    std::vector<unsigned long long int> primeList;
 }
 
 #endif //AOP_UEBUNGEN_CONNECTOR_H

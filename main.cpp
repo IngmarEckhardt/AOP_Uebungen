@@ -3,7 +3,8 @@
 #include <math.h>
 #include <fstream>
 #include "connector.h"
-#include <experimental/filesystem>
+#include <filesystem>
+#include <thread>
 
 #ifdef _WIN32
 
@@ -20,14 +21,19 @@ using std::endl;
 using std::setw;
 int userInp;
 
-bool exists_test (){
-    return std::experimental::filesystem::exists(".\\primes.txt");
-}
 
-void thread()
+
+void fillPrimelist()
 {
-    if(exists_test())
-    euler::yield1MioPrimes();
+    if(std::filesystem::exists(".\\primes.txt"))
+    {
+        euler::primeList = euler::readPrimes();
+    }
+    else
+    {
+        cout << "Erzeuge Primezahlen";
+        euler::primeList = euler::yieldPrimes();
+    }
 }
 
 
@@ -170,6 +176,10 @@ void menue()
 
 int main()
 {
+    ;
     mSetConsoleOutputCP(CP_UTF8);
+    std::thread t(&fillPrimelist);
     menue();
+    t.join();
+    return 0;
 }

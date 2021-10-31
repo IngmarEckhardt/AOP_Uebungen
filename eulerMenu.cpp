@@ -14,7 +14,7 @@ using std::setw;
 
 namespace euler
 {
-    std::vector<unsigned long long int> yield1MioPrimes()
+    std::vector<unsigned long long int> yieldPrimes()
     {
         clock_t erasthonesClock = clock();
 
