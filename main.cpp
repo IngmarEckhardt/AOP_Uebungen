@@ -19,12 +19,6 @@ using std::endl;
 using std::setw;
 int userInp;
 
-void fillPrimelist()
-{
-    euler::getPrimes();
-}
-
-
 unsigned long long fakultaet()
 {
     unsigned long long fak = 1;
@@ -126,47 +120,48 @@ unsigned long long fibonacci()
 void menue()
 {
     int menu;
-
-    cout << "Wähle das Program welches du ausführen möchtest" << endl;
-    cout << setw(51) << "Fakultät (1)" << endl;
-    cout << setw(50) << "Multiplikationstabelle (2)" << endl;
-    cout << setw(50) << "Nullstellenberechnung quadrat Funktion (3)" << endl;
-    cout << setw(50) << "Fibonacci-Zahlen (4)" << endl;
-    cout << setw(51) << "Euler_Problems(keine AOP-Übungen)&Spielereien (9)" << endl;
-    cout << setw(50) << "Programm beenden (0)" << endl;
-    cin >> menu;
-
-    switch (menu)
+    bool flag = false;
+    while (!flag)
     {
-        case 1:
-            fakultaet();
-            break;
-        case 2:
-            multiplicationTable();
-            break;
-        case 3:
-            nullstellen();
-            break;
-        case 4:
-            fibonacci();
-            break;
-        case 9:
-            euler::mainMenu();
-            break;
-        case 0:
-            exit(0);
-        default:
-            exit(-1);
+        cout << "Wähle das Program welches du ausführen möchtest" << endl;
+        cout << setw(51) << "Fakultät (1)" << endl;
+        cout << setw(50) << "Multiplikationstabelle (2)" << endl;
+        cout << setw(50) << "Nullstellenberechnung quadrat Funktion (3)" << endl;
+        cout << setw(50) << "Fibonacci-Zahlen (4)" << endl;
+        cout << setw(51) << "Euler_Problems(keine AOP-Übungen)&Spielereien (9)" << endl;
+        cout << setw(50) << "Programm beenden (0)" << endl;
+        cin >> menu;
+
+        switch (menu)
+        {
+            case 1:
+                fakultaet();
+                break;
+            case 2:
+                multiplicationTable();
+                break;
+            case 3:
+                nullstellen();
+                break;
+            case 4:
+                fibonacci();
+                break;
+            case 9:
+                euler::mainMenu();
+                break;
+            case 0:
+                flag = true;
+                break;
+            default:;
+        }
+        cout << endl;
     }
-    cout << endl;
-    menue();
 }
 
 int main()
 {
-
     mSetConsoleOutputCP(CP_UTF8);
-    std::thread t(&fillPrimelist);
+    std::thread t(&euler::getPrimes);
     menue();
     t.join();
     return 0;

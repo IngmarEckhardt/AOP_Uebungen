@@ -38,7 +38,6 @@ std::vector<unsigned long long int> yieldPrimes()
         if (bitVector[k])
         {
             listOfPrimes.push_back(k);
-
         }
     }
     erasthonesClock = clock() - erasthonesClock;
