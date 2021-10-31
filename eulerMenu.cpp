@@ -11,54 +11,78 @@ using std::cin;
 using std::endl;
 using std::setw;
 
+std::vector<unsigned long long int> listOfPrimes;
+
+std::vector<unsigned long long int> yieldPrimes()
+{
+    clock_t erasthonesClock = clock();
+
+    constexpr size_t size{0xFFFFFF};
+
+    std::vector<bool> bitVector(size);
+    std::fill(bitVector.begin(), bitVector.end(), true);
+    bitVector[0] = false;
+    bitVector[1] = false;
+    const unsigned long long int rangeOne = sqrt(size) + 1;
+    for (int i = 2; i < rangeOne; i++)
+    {
+        if (!bitVector[i]) continue;
+        int rangeTwo = (size - 1) / i + 1;
+        for (int j = 2; j < rangeTwo; j++)
+        {
+            bitVector[i * j] = false;
+        }
+    }
+    for (int k = 2; k < size; k++)
+    {
+        if (bitVector[k])
+        {
+            listOfPrimes.push_back(k);
+
+        }
+    }
+    erasthonesClock = clock() - erasthonesClock;
+    cout << "\nEratosthenes brauchte " << erasthonesClock << " klicks" << endl;
+
+    std::ofstream outFile(".\\primes.txt");
+    for (const auto &e: listOfPrimes) outFile << e << "\n";
+
+    return listOfPrimes;
+}
+
+bool readPrimesFromFile()
+{
+
+    std::ifstream is(".\\primes.txt");
+    if (!is.good()) return false;
+
+    std::istream_iterator<unsigned long long int> start(is), end;
+    std::vector<unsigned long long int> primes(start, end);
+    cout <<"Datei wurde gelesen";
+    listOfPrimes = primes;
+
+    return true;
+}
+
+
 
 namespace euler
 {
-    std::vector<unsigned long long int> yieldPrimes()
-    {
-        clock_t erasthonesClock = clock();
 
-        constexpr size_t size{0xFFFFFF};
-
-        std::vector<unsigned long long int> listOfPrimes;
-        std::vector<bool> bitVector(size);
-        std::fill(bitVector.begin(), bitVector.end(), true);
-        bitVector[0] = false;
-        bitVector[1] = false;
-        const unsigned long long int rangeOne = sqrt(size) + 1;
-        for (int i = 2; i < rangeOne; i++)
+    std::vector<unsigned long long int> getPrimes () {
+        if (listOfPrimes.empty())
         {
-            if (!bitVector[i]) continue;
-            int rangeTwo = (size - 1) / i + 1;
-            for (int j = 2; j < rangeTwo; j++)
+            if (readPrimesFromFile())
             {
-                bitVector[i * j] = false;
+                return listOfPrimes;
+            }
+            else
+            {
+                yieldPrimes();
+                return listOfPrimes;
             }
         }
-        for (int k = 2; k < size; k++)
-        {
-            if (bitVector[k])
-            {
-                listOfPrimes.push_back(k);
-            }
-        }
-        erasthonesClock = clock() - erasthonesClock;
-        cout << "\nEratosthenes brauchte " << erasthonesClock << " klicks" << endl;
-
-        std::ofstream outFile(".\\primes.txt");
-        for (const auto &e: listOfPrimes) outFile << e << "\n";
-
-        return listOfPrimes;
-    }
-
-    std::vector<unsigned long long int> readPrimes()
-    {
-
-        std::ifstream is(".\\primes.txt");
-        std::istream_iterator<unsigned long long int> start(is), end;
-        std::vector<unsigned long long int> primes(start, end);
-
-        return primes;
+        else return listOfPrimes;
     }
 
     void mainMenu()

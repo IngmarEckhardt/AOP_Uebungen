@@ -9,7 +9,7 @@ using std::setw;
 
 void yieldingPrimesForTestPurposes()
 {
-    std::vector<unsigned long long int> primes = euler::yieldPrimes();
+    std::vector<unsigned long long int> primes = euler::getPrimes();
     std::cout << "Es sind " << primes.size() << " Primzahlen in der Liste\n"
                                                 "Die größte Primzahl ist die " << primes.at((primes.size() - 1));
 //    std::vector<unsigned int> exponents;
@@ -32,8 +32,7 @@ void yieldingPrimesForTestPurposes()
 
 void readingPrimesForTestPurposes()
 {
-    std::vector<unsigned long long int> primes = euler::readPrimes();
-    std::cout << "Es sind " << primes.size() << " Primzahlen in der Liste\n";
+    std::cout << "Es sind " << euler::getPrimes().size() << " Primzahlen in der Liste\n";
 //                                                "Die größte Primzahl ist die " << primes.at((primes.size() - 1));
 }
 

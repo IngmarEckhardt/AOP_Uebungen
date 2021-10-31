@@ -1,9 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
-#include <fstream>
 #include "connector.h"
-#include <filesystem>
 #include <thread>
 
 #ifdef _WIN32
@@ -21,19 +19,9 @@ using std::endl;
 using std::setw;
 int userInp;
 
-
-
 void fillPrimelist()
 {
-    if(std::filesystem::exists(".\\primes.txt"))
-    {
-        euler::primeList = euler::readPrimes();
-    }
-    else
-    {
-        cout << "Erzeuge Primezahlen";
-        euler::primeList = euler::yieldPrimes();
-    }
+    euler::getPrimes();
 }
 
 
@@ -176,7 +164,7 @@ void menue()
 
 int main()
 {
-    ;
+
     mSetConsoleOutputCP(CP_UTF8);
     std::thread t(&fillPrimelist);
     menue();
