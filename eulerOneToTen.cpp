@@ -253,70 +253,64 @@ namespace euler
     void menuOneToTen()
     {
         int menu;
-
-        cout << "\nWähle das Euler-Problem" << endl;
-        cout << setw(71) << "Problem Eins -Summe durch 3 u. 5 teilbarer Zahlen (1)" << endl;
-        cout << setw(71) << "Problem Zwei - Summe gerader Fibonacci-Zahlen (2)" << endl;
-        cout << setw(71) << "Problem Drei - Primfaktorenzerlegung (3)" << endl;
-        cout << setw(73) << "Problem Vier - das größte Palindrom (4)" << endl;
-        cout << setw(72) << "Problem Fünf - die kleinste teilbare Zahl (5)" << endl;
-        cout << setw(71) << "Problem Sechs - Quadratsumme minus summierte Quadrate (6)" << endl;
-        cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
-        cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
-        cout << setw(71) << "Problem Neun- Pythagoras Triple (9)" << endl;
-        cout << setw(73) << "Problem Zehn- Summe der Primzahlen bis zur Größe 2Mio (10)" << endl;
-        cout << setw(71) << "Problem Zehn- Summe der Primzahlen, Sieb des Erastothenes (11)" << endl;
-        cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
-        cin >> menu;
-
-        switch (menu)
+        bool exit = false;
+        while (!exit)
         {
-            case 1:
-                eulerOne();
-                euler::menuOneToTen();
-                break;
-            case 2:
-                eulerTwo();
-                euler::menuOneToTen();
-                break;
-            case 3:
-                eulerThree();
-                euler::menuOneToTen();
-                break;
-            case 4:
-                eulerFour();
-                euler::menuOneToTen();
-                break;
-            case 5:
-                eulerFive();
-                euler::menuOneToTen();
-                break;
-            case 6:
-                eulerSix();
-                euler::menuOneToTen();
-                break;
-            case 7:
-                eulerSeven();
-                euler::menuOneToTen();
-                break;
-            case 8:
-                eulerEight();
-                euler::menuOneToTen();
-                break;
-            case 9:
-                eulerNine();
-                euler::menuOneToTen();
-                break;
-            case 10:
-                eulerTen();
-                euler::menuOneToTen();
-                break;
-            case 11:
-                eulerTenWithEratosthenes();
-                euler::menuOneToTen();
-                break;
-            case 0:
-                break;
+            cout << "\nWähle das Euler-Problem" << endl;
+            cout << setw(71) << "Problem Eins -Summe durch 3 u. 5 teilbarer Zahlen (1)" << endl;
+            cout << setw(71) << "Problem Zwei - Summe gerader Fibonacci-Zahlen (2)" << endl;
+            cout << setw(71) << "Problem Drei - Primfaktorenzerlegung (3)" << endl;
+            cout << setw(73) << "Problem Vier - das größte Palindrom (4)" << endl;
+            cout << setw(72) << "Problem Fünf - die kleinste teilbare Zahl (5)" << endl;
+            cout << setw(71) << "Problem Sechs - Quadratsumme minus summierte Quadrate (6)" << endl;
+            cout << setw(71) << "Problem Sieben- Die 10.001te Primzahl (7)" << endl;
+            cout << setw(73) << "Problem Acht- Das größte Produkt von 13 Ziffern (8)" << endl;
+            cout << setw(71) << "Problem Neun- Pythagoras Triple (9)" << endl;
+            cout << setw(73) << "Problem Zehn- Summe der Primzahlen bis zur Größe 2Mio (10)" << endl;
+            cout << setw(71) << "Problem Zehn- Summe der Primzahlen, Sieb des Erastothenes (11)" << endl;
+            cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
+            cin >> menu;
+
+            switch (menu)
+            {
+                case 1:
+                    eulerOne();
+                    break;
+                case 2:
+                    eulerTwo();
+                    break;
+                case 3:
+                    eulerThree();
+                    break;
+                case 4:
+                    eulerFour();
+                    break;
+                case 5:
+                    eulerFive();
+                    break;
+                case 6:
+                    eulerSix();
+                    break;
+                case 7:
+                    eulerSeven();
+                    break;
+                case 8:
+                    eulerEight();
+                    break;
+                case 9:
+                    eulerNine();
+                    break;
+                case 10:
+                    eulerTen();
+                    break;
+                case 11:
+                    eulerTenWithEratosthenes();
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default: ;
+            }
         }
     }
 }

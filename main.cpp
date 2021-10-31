@@ -1,7 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
+#include <fstream>
 #include "connector.h"
+#include <experimental/filesystem>
 
 #ifdef _WIN32
 
@@ -17,6 +19,17 @@ using std::cin;
 using std::endl;
 using std::setw;
 int userInp;
+
+bool exists_test (){
+    return std::experimental::filesystem::exists(".\\primes.txt");
+}
+
+void thread()
+{
+    if(exists_test())
+    euler::yield1MioPrimes();
+}
+
 
 unsigned long long fakultaet()
 {

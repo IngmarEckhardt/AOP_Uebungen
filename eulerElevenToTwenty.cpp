@@ -1,17 +1,17 @@
 #include "connector.h"
 #include <iostream>
 #include <iomanip>
-#include <cmath>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::setw;
 
-void yieldingPrimesForTestPurposes() {
-    std::vector<unsigned long long int> primes = euler::yield100MioPrimes();
+void yieldingPrimesForTestPurposes()
+{
+    std::vector<unsigned long long int> primes = euler::yield1MioPrimes();
     std::cout << "Es sind " << primes.size() << " Primzahlen in der Liste\n"
-                                                "Die größte Primzahl ist die " << primes.at((primes.size()-1));
+                                                "Die größte Primzahl ist die " << primes.at((primes.size() - 1));
 //    std::vector<unsigned int> exponents;
 //    unsigned int numberToCheck=1;
 //    unsigned short countAllFactors, countPrimeFaktor;
@@ -30,27 +30,39 @@ void yieldingPrimesForTestPurposes() {
 //    }
 }
 
+void readingPrimesForTestPurposes()
+{
+    std::vector<unsigned long long int> primes = euler::readPrimes();
+    std::cout << "Es sind " << primes.size() << " Primzahlen in der Liste\n";
+//                                                "Die größte Primzahl ist die " << primes.at((primes.size() - 1));
+}
 
 namespace euler
 {
     void menuElevenToTwenty()
     {
         int menu;
-
-        cout << "\nWähle das Euler-Problem" << endl;
-        cout << setw(71) << "Yielding Primes  (1)" << endl;
-
-        cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
-        cin >> menu;
-
-        switch (menu)
+        bool exit = false;
+        while (!exit)
         {
-            case 1:
-                yieldingPrimesForTestPurposes();
-                euler::menuElevenToTwenty();
-                break;
-            case 0:
-                break;
+            cout << "\nWähle das Euler-Problem" << endl;
+            cout << setw(71) << "Yielding Primes  (1)" << endl;
+            cout << setw(71) << "Reading Primes  (2)" << endl;
+
+            cout << setw(72) << "Zurück zum Eulermenu (0)" << endl;
+            cin >> menu;
+
+            switch (menu)
+            {
+                case 1:
+                    yieldingPrimesForTestPurposes();
+                    break;
+                case 2:
+                    readingPrimesForTestPurposes();
+                case 0:
+                    exit = true;
+                    break;
+            }
         }
     }
 }
