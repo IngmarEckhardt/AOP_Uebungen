@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <math.h>
 #include "connector.h"
-#include <thread>
 
 #ifdef _WIN32
 
@@ -117,12 +116,11 @@ unsigned long long fibonacci()
     return fibResult;
 }
 
-void menue()
+void mainMenu()
 {
     int menu;
     bool flag = false;
-    while (!flag)
-    {
+    while (!flag) {
         cout << "Wähle das Program welches du ausführen möchtest" << endl;
         cout << setw(51) << "Fakultät (1)" << endl;
         cout << setw(50) << "Multiplikationstabelle (2)" << endl;
@@ -132,8 +130,7 @@ void menue()
         cout << setw(50) << "Programm beenden (0)" << endl;
         cin >> menu;
 
-        switch (menu)
-        {
+        switch (menu) {
             case 1:
                 fakultaet();
                 break;
@@ -147,12 +144,12 @@ void menue()
                 fibonacci();
                 break;
             case 9:
-                euler::mainMenu();
+                euler::eulerMenu();
                 break;
             case 0:
                 flag = true;
-                break;
-            default:;
+            default:
+                ;
         }
         cout << endl;
     }
@@ -161,8 +158,5 @@ void menue()
 int main()
 {
     mSetConsoleOutputCP(CP_UTF8);
-    std::thread t(&euler::getPrimes);
-    menue();
-    t.join();
-    return 0;
+    mainMenu();
 }
