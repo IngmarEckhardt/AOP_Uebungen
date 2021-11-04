@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <cmath>
 #include <vector>
-#include "Eulerproblem.h"
+#include "../connector.h"
 
 using std::cout;
 using std::cin;
@@ -10,7 +10,7 @@ using std::endl;
 using std::setw;
 
 
-namespace euler {
+namespace global {
     std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue) {
         clock_t erasthonesClock = clock();
 

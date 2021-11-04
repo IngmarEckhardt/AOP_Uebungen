@@ -3,8 +3,10 @@
 #include <vector>
 #include <string>
 
-namespace euler {
-    void eulerMenu();
+namespace global {
+    void Menu();
+    std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue);
+    unsigned long long int reverseNumber(unsigned long long int num);
 }
 
 namespace repository {
