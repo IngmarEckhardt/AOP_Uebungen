@@ -18,7 +18,7 @@ namespace euler {
         std::vector<euler::Eulerproblem> eulerProbleme;
         for (int i = 1; i < countSolutions; i++)
         {
-            eulerProbleme.push_back(new euler::Eulerproblem(i));
+            eulerProbleme.push_back(Eulerproblem(i));
         }
 
         while (!exit) {

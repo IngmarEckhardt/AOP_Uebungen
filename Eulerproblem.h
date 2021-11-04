@@ -4,24 +4,26 @@
 
 #include <string>
 #include <vector>
+#include <functional>
 
 namespace euler {
+
     class Eulerproblem {
     public:
         Eulerproblem(int Number);
 
         Eulerproblem(Eulerproblem *pEulerproblem);
 
-        ~Eulerproblem();
-
         int getNumber() { return euler_number; }
         std::string getDescription() { return description; }
-        std::string getResult ();
+        std::string getResult () {return action();};
 
     private:
         int euler_number;
         std::string description;
+        std::function<std::string()> action;
     };
+
 
     std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue);
     unsigned long long int reverseNumber (unsigned long long int numberToReverse);
@@ -29,6 +31,8 @@ namespace euler {
 
 
 }
+
+
 namespace eulerSolutions {
     std::string getSolutionOne();
     std::string getSolutionTwo();

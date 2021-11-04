@@ -1,6 +1,8 @@
 #include <vector>
+#include <iostream>
 #include "Eulerproblem.h"
 #include "constants.h"
+using std::to_string;
 
 namespace eulerSolutions {
 
@@ -18,7 +20,7 @@ namespace eulerSolutions {
             product = 3 * i;
             sum += product;                             //addiert alle vielfachen von drei auf die Summe drauf
         }
-        return (&"Die Summe aller Zahlen bis 1000 die durch 3 oder 5 teilbar sind beträgt: "[sum]);
+        return "Die Summe aller Zahlen bis 1000 die durch 3 oder 5 teilbar sind beträgt: "+ to_string(sum);
     }
 
     std::string getSolutionTwo() {
@@ -32,7 +34,7 @@ namespace eulerSolutions {
                 sum += fibResult;   //addiert die aktuelle Fibonacci-Zahl zur Summe, falls sie gerade ist
         } while (fibResult <= 4'000'000);
 
-        return (&"Die Summe der geraden Fibonacci-Zahlen kleiner 4.000.000 beträgt: "[sum]);
+        return "Die Summe der geraden Fibonacci-Zahlen kleiner 4.000.000 beträgt: "+ to_string(sum);
     }
 
     std::string getSolutionThree() {
@@ -57,11 +59,11 @@ namespace eulerSolutions {
                 factor = primefactor;                         //merkt sich den letzten verwendeten Primefactor
             }
         }
-        return (&"\nPrime-Factorizing of n = "[product] + "\nDer größte Primfaktor ist: "[factor]);
+        return "\nPrime-Factorizing of n = "+to_string(product) + "\nDer größte Primfaktor ist: "+to_string(factor);
     }
 
     std::string getSolutionFour() {
-        unsigned long long int product, intermediateResult;
+        unsigned long long int product=1, intermediateResult;
         for (int firstNumber = 999; firstNumber > 900; firstNumber--) {
             for (int secondNumber = 999; secondNumber > 900; secondNumber--) {
                 intermediateResult = firstNumber * secondNumber;
@@ -72,7 +74,7 @@ namespace eulerSolutions {
             }
         }
 
-        return (&"\nDas größte Palindrom zweier dreistelliger Faktoren ist: "[product]);
+        return "\nDas größte Palindrom zweier dreistelliger Faktoren ist: "+ to_string(product);
     }
 
     std::string getSolutionFive() {
@@ -82,7 +84,7 @@ namespace eulerSolutions {
             product = ++i * 20;
             if (product % 19 != 0 || product % 18 != 0 || product % 17 != 0 || product % 16 != 0 || product % 15 != 0 ||
                 product % 14 != 0 || product % 13 != 0 || product % 12 != 0 || product % 11 != 0) continue;
-            return (&"\nDie kleinste Zahl die ohne Rest durch alle Zahlen von 1 bis 20 teilbar ist, ist: "[product]);
+            return "\nDie kleinste Zahl die ohne Rest durch alle Zahlen von 1 bis 20 teilbar ist, ist: "+to_string(product);
         }
     }
 
@@ -91,13 +93,13 @@ namespace eulerSolutions {
         constexpr unsigned long int squareOfSum = (((digit * digit) + digit) * ((digit * digit) + digit) / 4);
         constexpr unsigned long int sumOfSquares = (digit * (digit + 1) * (2 * digit + 1)) / 6;
         constexpr unsigned long int difference = (squareOfSum - sumOfSquares);
-        return &"Die Differenz zwischen der quadratieren Summe aller Zahlen bis 100 und der Summe der Quadrate dieser Zahlen ist: "[difference];
+        return "Die Differenz zwischen der quadratieren Summe aller Zahlen bis 100 und der Summe der Quadrate dieser Zahlen ist:\n"+ std::to_string(difference);
     }
 
     std::string getSolutionSeven() {
         std::vector<unsigned long long int>primeNumbers = euler::yieldPrimes(250'000);
 
-        return &"Die 10.001te Primzahl ist die: "[primeNumbers[10.000]];
+        return "Die 10.001te Primzahl ist die: " + to_string(primeNumbers[10'000]);
     }
 
 
@@ -113,7 +115,7 @@ namespace eulerSolutions {
             }
             if (product < step) product = step;
         }
-        return &"Das größte Produkt ist: "[product];
+        return"Das größte Produkt ist: " + to_string(product);
     }
 
     std::string getSolutionNine () {
@@ -121,15 +123,17 @@ namespace eulerSolutions {
         {
             for (unsigned short int b = 499; b > 0; b--)
             {
-                for (unsigned short int a = (b - 1); a > 0; a--)
+                for (unsigned short int a = 498; a > 0; a--)
                 {
                     if (((a + b + c) == 1000) && ((c * c) == (a * a) + (b * b)))
                     {
-                        return &"Bedingung: a<b<c; a²+b²=c², a+b+c=1000\na ist gleich = "[a]+"\nb ist gleich = "[b]+"\nc ist gleich = "[c];
+                        return "Bedingung: a<b<c; a²+b²=c², a+b+c=1000\na ist gleich = "+to_string(a)+
+                        "\nb ist gleich = "+to_string(b)+"\nc ist gleich = " + to_string(c);
                     }
                 }
             }
         }
+        return "failed";
     }
 
     std::string getSolutionTen (){
@@ -138,6 +142,6 @@ namespace eulerSolutions {
 
         for (const auto &e: primeNumbers) sum +=e;
 
-        return &"Die Summe aller Primzahlen bis 2.000.000 ist: "[sum];
+        return "Die Summe aller Primzahlen bis 2.000.000 ist: "+ to_string(sum);
     }
 }
