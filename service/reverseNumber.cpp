@@ -1,6 +1,6 @@
 #include "../connector.h"
 
-namespace global {
+namespace service {
     unsigned long long int reverseNumber(unsigned long long int num)
     {
         int base = 10, reversed = 0;

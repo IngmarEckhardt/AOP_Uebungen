@@ -10,7 +10,7 @@ using std::endl;
 using std::setw;
 
 
-namespace global {
+namespace service {
     std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue) {
         clock_t erasthonesClock = clock();
 

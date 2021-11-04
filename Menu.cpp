@@ -1,6 +1,6 @@
-#include "../connector.h"
-#include "Eulerproblem.h"
-#include  "../aop/AOPExercises.h"
+#include "connector.h"
+#include "euler/Eulerproblem.h"
+#include  "aop/AOPExercises.h"
 #include <iostream>
 #include <iomanip>
 
@@ -31,7 +31,6 @@ void printMenu(std::vector <T> &list)
 namespace global
 {
 
-
     void Menu()
     {
         std::vector<Eulerproblem> EulerMenu;
@@ -49,7 +48,7 @@ namespace global
             cout << setw(50) << "Euler-Probleme (2)\n";
             cout << setw(50) << "Programm beenden (0)\n" << endl;
             cin >> menu;
-            cout << "Wähle das Program welches du ausführen möchtest\n"<<endl;
+            cout << "Wähle das Program welches du ausführen möchtest\n";
             switch (menu)
             {
                 case 1:

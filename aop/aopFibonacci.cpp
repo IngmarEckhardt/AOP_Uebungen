@@ -1,13 +1,11 @@
 #include "AOPExercises.h"
 #include <iostream>
 #include <iomanip>
-//#include <math.h>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::setw;
-
 
 namespace aop
 {

@@ -7,11 +7,12 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::setw;
+
 namespace aop
 {
     double nullstellen()
     {
-        double a, b, c, diskriminante, realNull1, realNull2, imagNull;
+        double a, b, c, diskriminante, realNull1=0, realNull2, imagNull;
 
         cout << "Nullstellenberechnung der Funktion ax²+bx+c" << endl;
         cout << "(Dezimalbrüche mit '.' trennen)" << endl;

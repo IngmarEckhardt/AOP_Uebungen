@@ -4,7 +4,7 @@
 #include "constants.h"
 using std::to_string;
 
-namespace eulerSolutions {
+namespace euler {
 
     std::string getSolutionOne() {
 
@@ -46,7 +46,7 @@ namespace eulerSolutions {
         long long int product{600851475143};
         //Merkzettel für den größten gefundenen Faktor
 
-        primeNumbers = global::yieldPrimes(100'000);
+        primeNumbers = service::yieldPrimes(100'000);
         //erhöht i in jedem Durchlauf um die Primefaktoren zu finden, solange der Quotient nicht eins ist
         for (int i = 0; product > 1; i++) {
             if (i < primeNumbers.size()) primefactor = primeNumbers[i];
@@ -59,7 +59,7 @@ namespace eulerSolutions {
                 factor = primefactor;                         //merkt sich den letzten verwendeten Primefactor
             }
         }
-        return "\nPrime-Factorizing of n = "+to_string(product) + "\nDer größte Primfaktor ist: "+to_string(factor);
+        return "\nPrime-Factorizing of n = 600851475143.\nDer größte Primfaktor ist: "+to_string(factor);
     }
 
     std::string getSolutionFour() {
@@ -68,7 +68,7 @@ namespace eulerSolutions {
             for (int secondNumber = 999; secondNumber > 900; secondNumber--) {
                 intermediateResult = firstNumber * secondNumber;
                 if ((intermediateResult > product) &&
-                    (intermediateResult == global::reverseNumber(intermediateResult))) {
+                    (intermediateResult == service::reverseNumber(intermediateResult))) {
                     product = intermediateResult;
                 }
             }
@@ -97,7 +97,7 @@ namespace eulerSolutions {
     }
 
     std::string getSolutionSeven() {
-        std::vector<unsigned long long int>primeNumbers = global::yieldPrimes(250'000);
+        std::vector<unsigned long long int>primeNumbers = service::yieldPrimes(250'000);
 
         return "Die 10.001te Primzahl ist die: " + to_string(primeNumbers[10'000]);
     }
@@ -138,7 +138,7 @@ namespace eulerSolutions {
 
     std::string getSolutionTen (){
         unsigned long long int sum=0;
-        std::vector<unsigned long long int>primeNumbers = global::yieldPrimes(2'000'000);
+        std::vector<unsigned long long int>primeNumbers = service::yieldPrimes(2'000'000);
 
         for (const auto &e: primeNumbers) sum +=e;
 

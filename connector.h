@@ -5,8 +5,12 @@
 
 namespace global {
     void Menu();
+}
+
+namespace service {
     std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue);
     unsigned long long int reverseNumber(unsigned long long int num);
+    bool isPrime(unsigned long long int numberToCheck);
 }
 
 namespace repository {

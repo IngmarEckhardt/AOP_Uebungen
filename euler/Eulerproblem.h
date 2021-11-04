@@ -11,21 +11,12 @@ class Eulerproblem: public Exercises
 {
 public:
     Eulerproblem(int Number);
-    Eulerproblem(const Eulerproblem& eulerproblem);
     std::string execute () {return action();}
 private:
     std::function<std::string()> action;
 };
 
-
-std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue);
-
-unsigned long long int reverseNumber(unsigned long long int numberToReverse);
-
-bool isPrime(unsigned long long int numberToCheck);
-
-
-namespace eulerSolutions
+namespace euler
 {
     std::string getSolutionOne();
     std::string getSolutionTwo();
