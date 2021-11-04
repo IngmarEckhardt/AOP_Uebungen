@@ -1,6 +1,6 @@
 #include <vector>
-#include <iostream>
 #include "Eulerproblem.h"
+#include "../connector.h"
 #include "constants.h"
 using std::to_string;
 
@@ -46,7 +46,7 @@ namespace eulerSolutions {
         long long int product{600851475143};
         //Merkzettel für den größten gefundenen Faktor
 
-        primeNumbers = euler::yieldPrimes(100'000);
+        primeNumbers = global::yieldPrimes(100'000);
         //erhöht i in jedem Durchlauf um die Primefaktoren zu finden, solange der Quotient nicht eins ist
         for (int i = 0; product > 1; i++) {
             if (i < primeNumbers.size()) primefactor = primeNumbers[i];
@@ -68,7 +68,7 @@ namespace eulerSolutions {
             for (int secondNumber = 999; secondNumber > 900; secondNumber--) {
                 intermediateResult = firstNumber * secondNumber;
                 if ((intermediateResult > product) &&
-                    (intermediateResult == euler::reverseNumber(intermediateResult))) {
+                    (intermediateResult == global::reverseNumber(intermediateResult))) {
                     product = intermediateResult;
                 }
             }
@@ -97,14 +97,14 @@ namespace eulerSolutions {
     }
 
     std::string getSolutionSeven() {
-        std::vector<unsigned long long int>primeNumbers = euler::yieldPrimes(250'000);
+        std::vector<unsigned long long int>primeNumbers = global::yieldPrimes(250'000);
 
         return "Die 10.001te Primzahl ist die: " + to_string(primeNumbers[10'000]);
     }
 
 
     std::string getSolutionEight (){
-        std::string number = eulerConst::numberProblem8;
+        std::string number = numberProblem8;
         unsigned long long product = 0;
         for (int start = 0; start + 13 < 1000; start++)
         {
@@ -138,7 +138,7 @@ namespace eulerSolutions {
 
     std::string getSolutionTen (){
         unsigned long long int sum=0;
-        std::vector<unsigned long long int>primeNumbers = euler::yieldPrimes(2'000'000);
+        std::vector<unsigned long long int>primeNumbers = global::yieldPrimes(2'000'000);
 
         for (const auto &e: primeNumbers) sum +=e;
 

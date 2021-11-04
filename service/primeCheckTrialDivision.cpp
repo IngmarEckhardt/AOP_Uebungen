@@ -1,6 +1,6 @@
-#include "Eulerproblem.h"
+#include "../euler/Eulerproblem.h"
 
-namespace euler {
+namespace global {
     bool isPrime(long int numberToCheck) {
         if (numberToCheck == 1) return false;
         if (numberToCheck == 2) return true;

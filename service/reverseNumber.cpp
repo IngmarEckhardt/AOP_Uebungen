@@ -1,6 +1,6 @@
-#include "Eulerproblem.h"
+#include "../connector.h"
 
-namespace euler {
+namespace global {
     unsigned long long int reverseNumber(unsigned long long int num)
     {
         int base = 10, reversed = 0;

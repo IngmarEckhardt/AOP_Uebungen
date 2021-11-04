@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iterator>
-#include "connector.h"
+#include "../connector.h"
 
 namespace repository {
     void writeVectorToFile (std::vector<unsigned long long int> &primes, std::string file = ".\\primes.txt"){
