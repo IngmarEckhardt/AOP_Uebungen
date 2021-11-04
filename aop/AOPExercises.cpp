@@ -1,8 +1,7 @@
 #include "AOPExercises.h"
 
-AOPExercises::AOPExercises(int Number) {
+AOPExercises::AOPExercises(unsigned short int Number) {
     idNumber = Number;
-
 
     switch (Number)
     {

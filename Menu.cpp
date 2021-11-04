@@ -22,7 +22,7 @@ void printMenu(std::vector <T> &list)
 {
     for (auto &e: list)
     {
-        cout << "\nProgramm Nr." << e.getID() << ": " << e.getDescription();
+        cout << "\nProgramm Nr." << e.getID() << " :  " << e.getDescription();
     }
     cout << "\n0: Programm beenden (0)" << endl;
 }
@@ -30,24 +30,28 @@ void printMenu(std::vector <T> &list)
 
 namespace global
 {
-
     void Menu()
     {
-        std::vector<Eulerproblem> EulerMenu;
-        std::vector<AOPExercises> AOPMenu;
         int countSolutions = 10;
         int countAOPExamples = 4;
-        int menu;
+        std::vector<Eulerproblem> EulerMenu;
+        std::vector<AOPExercises> AOPMenu;
+        std::string input;
+        unsigned short int menu;
         bool exit = false;
 
 
         while (!exit)
         {
-            cout << "Menü\n";
+            cout << "\n" << setw(27) <<"Menü\n";
             cout << setw(51) << "AOP-Übungen (1)\n";
             cout << setw(50) << "Euler-Probleme (2)\n";
             cout << setw(50) << "Programm beenden (0)\n" << endl;
-            cin >> menu;
+
+            cin >> input;
+            if (!service::isStringANumber(input)) continue;
+            else menu= service::parseIntFromString(input);
+
             cout << "Wähle das Program welches du ausführen möchtest\n";
             switch (menu)
             {
@@ -58,9 +62,14 @@ namespace global
                         fillWithProgramm(AOPMenu, countAOPExamples);
                     }
                     printMenu(AOPMenu);
-                    cin >> menu;
+                    cin >> input;
+
+                    if (!service::isStringANumber(input)) continue;
+                    else menu= service::parseIntFromString(input);
+
                     AOPMenu[menu - 1].execute();
                     break;
+
                 case 2:
                     if(EulerMenu.empty())
                     {
@@ -68,13 +77,20 @@ namespace global
                         fillWithProgramm(EulerMenu, countSolutions);
                     }
                     printMenu(EulerMenu);
-                    cin >> menu;
-                    cout << EulerMenu[menu - 1].execute() << endl;
+                    cin >> input;
+
+                    if (!service::isStringANumber(input)) continue;
+                    else menu= service::parseIntFromString(input);
+
+                    cout << EulerMenu[menu - 1].execute();
                     break;
+
                 case 0:
                     exit = true;
                     break;
-                default:;
+
+                default:
+                    ;
             }
         }
     }

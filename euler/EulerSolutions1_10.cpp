@@ -49,6 +49,7 @@ namespace euler {
         primeNumbers = service::yieldPrimes(100'000);
         //erhöht i in jedem Durchlauf um die Primefaktoren zu finden, solange der Quotient nicht eins ist
         for (int i = 0; product > 1; i++) {
+
             if (i < primeNumbers.size()) primefactor = primeNumbers[i];
             else primefactor++;
 

@@ -6,7 +6,7 @@
 class AOPExercises : public Exercises
 {
 public:
-    AOPExercises(int Number);
+    explicit AOPExercises(unsigned short int Number);
     void execute(){return action();}
 
 private:
@@ -17,7 +17,7 @@ namespace aop {
     unsigned long long int fakultaet();
     int multiplicationTable();
     double nullstellen();
-    unsigned long long fibonacci();
+    unsigned long long int fibonacci();
 
 }
 

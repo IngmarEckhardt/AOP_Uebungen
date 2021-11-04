@@ -10,6 +10,9 @@ namespace global {
 namespace service {
     std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue);
     unsigned long long int reverseNumber(unsigned long long int num);
+    bool isStringANumber(const std::string &input);
+    bool isStringADouble(const std::string &input);
+    unsigned long long int parseIntFromString(const std::string &input);
     bool isPrime(unsigned long long int numberToCheck);
 }
 

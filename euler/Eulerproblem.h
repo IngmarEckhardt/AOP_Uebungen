@@ -1,7 +1,6 @@
 #ifndef AOP_UEBUNGEN_EULERPROBLEM_H
 #define AOP_UEBUNGEN_EULERPROBLEM_H
 
-
 #include <string>
 #include <vector>
 #include <functional>
