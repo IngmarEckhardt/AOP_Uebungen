@@ -23,6 +23,6 @@ AOPExercises::AOPExercises(unsigned short int Number) {
             break;
         case 5:
             description = "Wurzelberechnung mit Heron-Verfahren";
-            action = &aop::squareRoot;
+            action = &aop::HeronAlgorythm;
     }
 }
