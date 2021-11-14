@@ -7,10 +7,6 @@ class AOPExercises : public Exercises
 {
 public:
     explicit AOPExercises(unsigned short int Number);
-    std::string execute(){return action();}
-
-private:
-    std::function<std::string()> action;
 };
 
 namespace aop {

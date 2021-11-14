@@ -10,9 +10,6 @@ class Eulerproblem: public Exercises
 {
 public:
     Eulerproblem(int Number);
-    std::string execute () {return action();}
-private:
-    std::function<std::string()> action;
 };
 
 namespace euler

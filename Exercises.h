@@ -8,11 +8,12 @@ class Exercises
 {
 public:
     Exercises() {}
-    int execute();
+    std::string execute(){return action();}
     std::string getDescription() { return description;}
     unsigned short int getID () {return idNumber;}
 
 protected:
+    std::function<std::string()> action;
     unsigned short int idNumber;
     std::string description;
 
