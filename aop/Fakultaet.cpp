@@ -9,31 +9,33 @@ using std::setw;
 
 namespace aop
 {
-    unsigned long long int fakultaet()
+    std::string fakultaet()
     {
+        std::stringstream stringstream;
         unsigned short int userInp;
         unsigned long long int fak = 1;
 
         cout << "Gib die Zahl n ein deren Fakultät berechnet werden soll: " << endl;
         cin >> userInp;
         for (; userInp > 1; userInp--) fak *= userInp;
-        cout << "Die Fakultät ist: " << fak << endl;
+        stringstream << "Die Fakultät ist: " << fak << endl;
 
-        return fak;
+        return stringstream.str();
     }
 
-    int multiplicationTable()
+    std::string multiplicationTable()
     {
-        cout << "Multiplikationstabelle: " << endl;
+        std::stringstream stringstream;
+        stringstream << "Multiplikationstabelle: \n";
 
         for (int i = 1; i < 11; i++)
         {
             for (int j = 1; j < 11; j++)
             {
-                cout << setw(5) << i * j;
+                stringstream << setw(5) << i * j;
             }
-            cout << endl;
+            stringstream << "\n";
         }
-        return 0;
+        return stringstream.str();
     }
 }

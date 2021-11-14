@@ -33,7 +33,7 @@ namespace global
     void Menu()
     {
         int countSolutions = 10;
-        int countAOPExamples = 4;
+        int countAOPExamples = 5;
         std::vector<Eulerproblem> EulerMenu;
         std::vector<AOPExercises> AOPMenu;
         std::string input;
@@ -67,7 +67,7 @@ namespace global
                     if (!service::isStringANumber(input)) continue;
                     else menu= service::parseIntFromString(input);
 
-                    AOPMenu[menu - 1].execute();
+                    cout << AOPMenu[menu - 1].execute();
                     break;
 
                 case 2:

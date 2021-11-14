@@ -21,5 +21,8 @@ AOPExercises::AOPExercises(unsigned short int Number) {
             description = "Fibonacci-Zahlen";
             action = &aop::fibonacci;
             break;
+        case 5:
+            description = "Wurzelberechnung mit Heron-Verfahren";
+            action = &aop::squareRoot;
     }
 }

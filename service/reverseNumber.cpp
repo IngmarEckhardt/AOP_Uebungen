@@ -1,9 +1,9 @@
 #include "../connector.h"
 
 namespace service {
-    unsigned long long int reverseNumber(unsigned long long int num)
+    unsigned long long int reverseNumber(unsigned long long int num, unsigned short int base)
     {
-        int base = 10, reversed = 0;
+        int reversed = 0;
 
         while (num != 0)
         {

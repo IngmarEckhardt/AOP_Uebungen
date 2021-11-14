@@ -7,17 +7,18 @@ class AOPExercises : public Exercises
 {
 public:
     explicit AOPExercises(unsigned short int Number);
-    void execute(){return action();}
+    std::string execute(){return action();}
 
 private:
-    std::function<void()> action;
+    std::function<std::string()> action;
 };
 
 namespace aop {
-    unsigned long long int fakultaet();
-    int multiplicationTable();
-    double nullstellen();
-    unsigned long long int fibonacci();
+    std::string fakultaet();
+    std::string multiplicationTable();
+    std::string nullstellen();
+    std::string fibonacci();
+    std::string squareRoot();
 
 }
 

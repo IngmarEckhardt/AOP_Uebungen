@@ -11,8 +11,10 @@ using std::setw;
 
 namespace aop
 {
-    double nullstellen()
+    std::string nullstellen()
     {
+
+        std::stringstream stringstream;
         double a = 0, b = 0, c = 0, diskriminante = 0, realNull1 = 0, realNull2 = 0, imagNull = 0;
         std::string input;
 
@@ -44,36 +46,36 @@ namespace aop
 
         if (a == 0 && b == 0 && c == 0)
         {
-            cout << "Alle Werte von x sind eine Nullstelle, es gibt unendlich viele Nullstellen" << endl;
+            stringstream << "Alle Werte von x sind eine Nullstelle, es gibt unendlich viele Nullstellen" << endl;
         }
         else if (a == 0 && b == 0)
         {
-            cout << "Die Funktion hat keine Nullstellen" << endl;
+            stringstream << "Die Funktion hat keine Nullstellen" << endl;
         }
         else if (a == 0)
         {
             realNull1 = -c / b;
-            cout << "Die Nullstelle der Funktion liegt bei x = " << realNull1 << endl;
+            stringstream << "Die Nullstelle der Funktion liegt bei x = " << realNull1 << endl;
         }
         else if (diskriminante == 0)
         {
             realNull1 = -b / (2 * a);
-            cout << "Die Nullstelle der Funktion liegt bei x = " << realNull1 << endl;
+            stringstream << "Die Nullstelle der Funktion liegt bei x = " << realNull1 << endl;
         }
         else if (diskriminante > 0)
         {
             realNull1 = (-b + sqrt(diskriminante)) / (2 * a);
             realNull2 = (-b - sqrt(diskriminante)) / (2 * a);
-            cout << "Die Nullstellen der Funktion liegen bei x1 = " << realNull1 << "und x2 = " << realNull2 << endl;
+            stringstream << "Die Nullstellen der Funktion liegen bei x1 = " << realNull1 << "und x2 = " << realNull2 << endl;
         }
         else
         {
             realNull1 = -b / (2 * a);
             imagNull = sqrt(std::abs(diskriminante)) / (2 * a);
-            cout << "Die Nullstellen der Funktion liegen im Bereich der komplexen Zahlen." << endl;
-            cout << "x1 = " << realNull1 << " + " << imagNull << "i" << endl;
-            cout << "x2 = " << realNull1 << " - " << imagNull << "i" << endl;
+            stringstream << "Die Nullstellen der Funktion liegen im Bereich der komplexen Zahlen.\n";
+            stringstream << "x1 = " << realNull1 << " + " << imagNull << "i\n";
+            stringstream << "x2 = " << realNull1 << " - " << imagNull << "i" << endl;
         }
-        return realNull1;
+        return stringstream.str();
     }
 }
