@@ -15,6 +15,8 @@ namespace aop {
     std::string nullstellen();
     std::string fibonacci();
     std::string HeronAlgorythm();
+    std::string CosinusWithLoop();
+    std::string SinusWithLoop();
 
 }
 

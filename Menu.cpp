@@ -33,7 +33,7 @@ namespace global
     void Menu()
     {
         int countSolutions = 10;
-        int countAOPExamples = 5;
+        int countAOPExamples = 7;
         std::vector<Eulerproblem> EulerMenu;
         std::vector<AOPExercises> AOPMenu;
         std::string input;

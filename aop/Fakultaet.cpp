@@ -18,6 +18,8 @@ namespace aop
         cout << "Gib die Zahl n ein deren Fakultät berechnet werden soll: " << endl;
         cin >> userInp;
         for (; userInp > 1; userInp--) fak *= userInp;
+
+
         stringstream << "Die Fakultät ist: " << fak << endl;
 
         return stringstream.str();

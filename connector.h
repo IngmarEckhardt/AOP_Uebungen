@@ -14,6 +14,7 @@ namespace service {
     bool isStringADouble(const std::string &input);
     unsigned long long int parseIntFromString(const std::string &input);
     bool isPrime(unsigned long long int numberToCheck);
+    unsigned long long int getFactorial (unsigned short int number);
 }
 
 namespace repository {

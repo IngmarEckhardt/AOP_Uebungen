@@ -24,5 +24,14 @@ AOPExercises::AOPExercises(unsigned short int Number) {
         case 5:
             description = "Wurzelberechnung mit Heron-Verfahren";
             action = &aop::HeronAlgorythm;
+            break;
+        case 6:
+            description = "Cosinusfunktion ohne cos oder Fakultät";
+            action = &aop::CosinusWithLoop;
+            break;
+        case 7:
+            description = "Sinusfunktion ohne sin oder Fakultät";
+            action = &aop::SinusWithLoop;
+            break;
     }
 }
