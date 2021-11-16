@@ -2,7 +2,7 @@
 #include <string>
 
 namespace service {
-    bool isStringANumber(const std::string &input)
+    bool isStringAInt(const std::string &input)
     {
 
         unsigned int range = input.size();

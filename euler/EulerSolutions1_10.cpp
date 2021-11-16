@@ -14,11 +14,11 @@ namespace euler {
         for (int i = 1; i < 200; i++) {
             product = 5 * i;
             if (product % 3 != 0)
-                sum += product;       //addiert die Vielfachen von 5, solange sie nicht durch 3 teilbar sind
+                sum += product;
         }
         for (int i = 1; i < 334; i++) {
             product = 3 * i;
-            sum += product;                             //addiert alle vielfachen von drei auf die Summe drauf
+            sum += product;
         }
         return "Die Summe aller Zahlen bis 1000 die durch 3 oder 5 teilbar sind beträgt: "+ to_string(sum);
     }
@@ -31,7 +31,7 @@ namespace euler {
             fib1 = fib2;
             fib2 = fibResult;
             if (fibResult % 2 == 0)
-                sum += fibResult;   //addiert die aktuelle Fibonacci-Zahl zur Summe, falls sie gerade ist
+                sum += fibResult;
         } while (fibResult <= 4'000'000);
 
         return "Die Summe der geraden Fibonacci-Zahlen kleiner 4.000.000 beträgt: "+ to_string(sum);
@@ -42,22 +42,17 @@ namespace euler {
         long long int factor;
         long long int primefactor;
 
-        //ausgangswert der Zerlegung, später als Zwischenergebnis zum Merken der Quotienten
         long long int product{600851475143};
-        //Merkzettel für den größten gefundenen Faktor
 
         primeNumbers = service::yieldPrimes(100'000);
-        //erhöht i in jedem Durchlauf um die Primefaktoren zu finden, solange der Quotient nicht eins ist
         for (int i = 0; product > 1; i++) {
 
             if (i < primeNumbers.size()) primefactor = primeNumbers[i];
             else primefactor++;
 
-            //while-Schleife sorgt dafür dass der aktuelle Primefaktor i mehrfach genutzt wird
             while (product % primefactor == 0) {
-                //dividiert die Ausgangswert bzw die sich dann ergebenden Quotienten durch den Primefaktor, speichert den Quotienten als Zwischenschritt in Product
                 product /= primefactor;
-                factor = primefactor;                         //merkt sich den letzten verwendeten Primefactor
+                factor = primefactor;
             }
         }
         return "\nPrime-Factorizing of n = 600851475143.\nDer größte Primfaktor ist: "+to_string(factor);
@@ -67,9 +62,11 @@ namespace euler {
         unsigned long long int product=1, intermediateResult;
         for (int firstNumber = 999; firstNumber > 900; firstNumber--) {
             for (int secondNumber = 999; secondNumber > 900; secondNumber--) {
+
                 intermediateResult = firstNumber * secondNumber;
-                if ((intermediateResult > product) &&
-                    (intermediateResult == service::reverseNumber(intermediateResult))) {
+
+                if ((intermediateResult > product) && (intermediateResult == service::reverseNumber(intermediateResult)))
+                {
                     product = intermediateResult;
                 }
             }

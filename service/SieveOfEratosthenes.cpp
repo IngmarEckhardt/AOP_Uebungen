@@ -1,8 +1,8 @@
+#include "../connector.h"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 #include <vector>
-#include "../connector.h"
 
 using std::cout;
 using std::cin;
@@ -14,7 +14,7 @@ namespace service {
     std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue) {
         clock_t erasthonesClock = clock();
 
-        size_t size{maxValue};
+        const size_t size{maxValue};
 
         std::vector<unsigned long long int> listOfPrimes;
         std::vector<bool> bitVector(size);

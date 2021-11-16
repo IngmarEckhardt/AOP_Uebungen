@@ -3,21 +3,18 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
-#include <cmath>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::setw;
+
 //Functions
-unsigned short int getMaxN();
-unsigned short int getMaxNSinus();
-double getUserInputDouble(std::string &message);
-double getSmallerInput(double input);
+unsigned short int getMaxFactorialCosinus();
+unsigned short int getMaxFactorialSinus();
+double ModuloPi(double input);
 
 //constants
-std::string messageCosinus {"Gib die Zahl (Bogenmaß) ein deren Cosinus mithilfe des Newton-Iterationsverfahrens bestimmt wird:"};
-std::string messageSinus {"Gib die Zahl (Bogenmaß) ein deren Sinus mithilfe des Newton-Iterationsverfahrens bestimmt wird:"};
 const unsigned long long int maxProduct {std::numeric_limits<unsigned long long int>::max()};
 //maxProduct=18446744073709551615 (Win10/x86 64bit)
 
@@ -27,11 +24,12 @@ namespace aop
     std::string CosinusWithLoop()
     {
         double cosinus = 0;
+        std::string messageCosinus = "Gib die Zahl (Bogenmaß) ein deren Cosinus mithilfe des Newton-Iterationsverfahrens bestimmt wird:";
         std::stringstream stringstream;
 
-        unsigned short int maxN{getMaxN()};
-        double userInput{getUserInputDouble(messageCosinus)};
-        userInput = getSmallerInput(userInput);
+        unsigned short int maxN{getMaxFactorialCosinus()};
+        double userInput = service::getUserInputDouble(messageCosinus);
+        userInput = ModuloPi(userInput);
 
         for (int i = 0; i <=maxN; i++)
         {
@@ -46,32 +44,36 @@ namespace aop
     std::string SinusWithLoop()
     {
         double sinus = 0;
+        std::string messageSinus = "Gib die Zahl (Bogenmaß) ein deren Sinus mithilfe des Newton-Iterationsverfahrens bestimmt wird:";
         std::stringstream stringstream;
 
-        unsigned short int maxN{getMaxNSinus()};
-        double userInput{getUserInputDouble(messageSinus)};
-        userInput = getSmallerInput(userInput);
+        unsigned short int maxN{getMaxFactorialSinus()};
+        double userInput = service::getUserInputDouble(messageSinus);
+        userInput = ModuloPi(userInput);
 
         for (int i = 0; i <=maxN; i++)
         {
             sinus += (std::pow((-1),i) * std::pow(userInput, (2*i)+1) / service::getFactorial((2*i)+1));
         }
 
-        stringstream << "cos(" << userInput << ") = " << sinus << endl;
+        stringstream << "sin(" << userInput << ") = " << sinus << endl;
         return stringstream.str();
     }
 }
 
-unsigned short int getMaxN()
+unsigned short int getMaxFactorialCosinus()
 {
     for (unsigned short int i = 1; i < 50; i++)
     {
         unsigned long long int factorial{service::getFactorial(i)};
-        if ((maxProduct / (i+1)) < factorial) return i/2;
+        if ((maxProduct / (i+1)) < factorial)
+        {
+            return i/2;
+        }
     }
     return 0;
 }
-unsigned short int getMaxNSinus()
+unsigned short int getMaxFactorialSinus()
 {
     for (unsigned short int i = 1; i < 50; i++)
     {
@@ -81,18 +83,10 @@ unsigned short int getMaxNSinus()
     return 0;
 }
 
-double getUserInputDouble(std::string &message)
-{
-    std::string input;
-    do
+double ModuloPi(double input) {
+    if (input > (2 * M_PI))
     {
-        cout << message << "\n(nur Zahlen eingeben, Dezimaltrennung mit Punkt) "<< endl;
-        cin >> input;
+        return ModuloPi(input - (2 * M_PI));
     }
-    while (!service::isStringADouble(input));
-    return std::stod(input);
-}
-double getSmallerInput(double input) {
-    if (input > (2 * M_PI)) return getSmallerInput(input - (2 * M_PI));
     return input;
 }

@@ -10,7 +10,7 @@ public:
 };
 
 namespace aop {
-    std::string fakultaet();
+    std::string factorial();
     std::string multiplicationTable();
     std::string nullstellen();
     std::string fibonacci();

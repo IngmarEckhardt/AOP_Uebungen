@@ -15,34 +15,20 @@ namespace aop
     {
 
         std::stringstream stringstream;
-        double a = 0, b = 0, c = 0, diskriminante = 0, realNull1 = 0, realNull2 = 0, imagNull = 0;
+        double realNull1 = 0, realNull2 = 0, imagNull = 0;
         std::string input;
 
-        do
-        {
-            input.clear();
-            cout << "Nullstellenberechnung der Funktion ax²+bx+c" << endl;
-            cout << "(Dezimalbrüche mit '.' trennen)" << endl;
-            cout << "Gib den Parameter a ein: " << endl;
-            cin >> input;
-        } while (!service::isStringADouble(input));
-        a = std::stod(input);
+        cout << "Nullstellenberechnung der Funktion ax²+bx+c" << endl;
 
-        do
-        {
-            cout << "Gib den Parameter b ein: " << endl;
-            cin >> input;
-        } while (!service::isStringADouble(input));
-        b = std::stod(input);
+        std::string messageA = "Gib den Parameter a ein: ";
+        double a = service::getUserInputDouble(messageA);
+        std::string messageB = "Gib den Parameter b ein: ";
+        double b = service::getUserInputDouble(messageB);
+        std::string messageC = "Gib den Parameter b ein: ";
+        double c = service::getUserInputDouble(messageC);
 
-        do
-        {
-            cout << "Gib den Parameter c ein: " << endl;
-            cin >> input;
-        } while (!service::isStringADouble(input));
-        c = std::stod(input);
 
-        diskriminante = pow(b, 2) - 4 * a * c;
+        double diskriminante = pow(b, 2) - 4 * a * c;
 
         if (a == 0 && b == 0 && c == 0)
         {

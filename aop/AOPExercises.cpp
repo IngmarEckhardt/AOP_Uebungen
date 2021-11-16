@@ -7,7 +7,7 @@ AOPExercises::AOPExercises(unsigned short int Number) {
     {
         case 1:
             description = "Fakultät berechnen";
-            action = &aop::fakultaet;
+            action = &aop::factorial;
             break;
         case 2:
             description = "Multiplikationstabelle";

@@ -1,4 +1,5 @@
 #include "AOPExercises.h"
+#include "../connector.h"
 #include <iostream>
 #include <iomanip>
 
@@ -9,18 +10,13 @@ using std::setw;
 
 namespace aop
 {
-    std::string fakultaet()
+    std::string factorial()
     {
         std::stringstream stringstream;
-        unsigned short int userInp;
-        unsigned long long int fak = 1;
+        std::string message = "Gib die Zahl n ein deren Fakultät berechnet werden soll: ";
+        unsigned short int userInp = service::getUserInputInteger(message);
 
-        cout << "Gib die Zahl n ein deren Fakultät berechnet werden soll: " << endl;
-        cin >> userInp;
-        for (; userInp > 1; userInp--) fak *= userInp;
-
-
-        stringstream << "Die Fakultät ist: " << fak << endl;
+        stringstream << "Die Fakultät ist: " << service::getFactorial(userInp) << endl;
 
         return stringstream.str();
     }

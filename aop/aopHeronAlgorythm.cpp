@@ -2,6 +2,7 @@
 #include "../connector.h"
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 using std::cout;
 using std::cin;
@@ -10,11 +11,14 @@ using std::setw;
 
 void heronMenu(char &menu);
 
-void askUserForNumber(std::string &input, double &userInpNumber);
-
 void calcRootWithHeronSteps(std::stringstream &stringstream);
 
 void calcRootWithHeronDiff(std::stringstream &stringstream);
+
+std::string askUserForInput = "Es wird die Wurzel der Zahl c mittels Heron-Verfahren bestimmt\n"
+                              "\"Bitte gebe die Zahl c ein deren Wurzel bestimmt werden soll.";
+std::string askUserPrecision = "Bitte die Präzision e = (Resultat^2 - c) eingeben der die Wurzel ermittelt werden soll.";
+std::string askUserForSteps = "Bitte gib ein wieviele Schritte der Folge x(n+1) = ((c/x(n)) + x(n)) /2 berechnet werden sollen:";
 
 
 namespace aop
@@ -70,31 +74,14 @@ void heronMenu(char &menu)
     menu = input[0];
 }
 
-void askUserForNumber(std::string &input, double &userInpNumber)
-{
-    input.clear();
-    cout << "Es wird die Wurzel der Zahl c mittels Heron-Verfahren bestimmt\n";
-    do
-    {
-        cout << "Bitte gebe die Zahl c ein deren Wurzel bestimmt werden soll. (dezimal 0.00)" << endl;
-        cin >> input;
-    } while (!service::isStringADouble(input));
-    userInpNumber = std::stod(input);
-}
-
 void calcRootWithHeronSteps(std::stringstream &stringstream)
 {
     double userInpNumber, folge = 1;
     unsigned short int userInpSteps;
     std::string input;
-    askUserForNumber(input, userInpNumber);
-    do
-    {
-        cout << "Bitte gib ein wieviele Schritte der Folge x(n+1) = ((c/x(n)) + x(n)) /2 berechnet werden sollen:"
-             << endl;
-        cin >> input;
-    } while (!service::isStringANumber(input));
-    userInpSteps = std::stoi(input);
+
+    userInpNumber = service::getUserInputDouble(askUserForInput);
+    userInpSteps = service::getUserInputInteger(askUserForSteps);
 
 
     for (int i = 1; i <= userInpSteps; i++)
@@ -106,26 +93,25 @@ void calcRootWithHeronSteps(std::stringstream &stringstream)
 
 void calcRootWithHeronDiff(std::stringstream &stringstream)
 {
-    double userInpNumber, folge = 1, usrChoicePrecision = 0.001, calculatedPrecision = 0;
+    double folge = 1, calculatedPrecision = 0;
     bool flag = false;
     std::string input;
 
-    askUserForNumber(input, userInpNumber);
-    do
-    {
-        cout << "Bitte Präzision e = (Resultat^2 - c) der die Wurzel ermittel werden soll. (dezimal 0.00)"
-             << endl;
-        cin >> input;
-    } while (!service::isStringADouble(input));
-    usrChoicePrecision = std::stod(input);
+    double userInpNumber = service::getUserInputDouble(askUserForInput);
+    double usrChoicePrecision = service::getUserInputDouble(askUserPrecision);
 
     for (int i = 1; !flag; i++)
     {
         folge = ((userInpNumber / folge) + folge) / 2;
-        cout << "x(" << i << ") = " << folge << "; Präzision: ";
-        calculatedPrecision = (folge * folge) - userInpNumber;
-        cout << std::fixed << std::setprecision(input.size() + 1) << calculatedPrecision << std::defaultfloat << "\n";
+        calculatedPrecision = std::abs((folge * folge) - userInpNumber);
 
-        if (calculatedPrecision < usrChoicePrecision) flag = true;
+        if (calculatedPrecision < usrChoicePrecision)
+        {
+            cout << "x(" << i << ") = " << folge << "; Präzision: ";
+            flag = true;
+            cout << std::fixed << std::setprecision(input.size() + 1) << calculatedPrecision << std::defaultfloat
+                 << "\n";
+
+        }
     }
 }
