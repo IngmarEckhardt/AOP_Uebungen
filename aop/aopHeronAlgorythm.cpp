@@ -58,7 +58,7 @@ void heronMenu(char &menu)
     while (!isValidInput)
     {
         isValidInput = true;
-        cout << "\nStarten des Heronverfahren mit Anzahl der Schritte(s) oder der Präzision(p) oder Programm be(e)nden?"
+        cout << "\nStarten des Heronverfahren mit Anzahl der Schritte(s), der Präzision(p) oder Programm be(e)nden?"
              << endl;
         cin >> input;
         range = input.size();
@@ -66,7 +66,7 @@ void heronMenu(char &menu)
         {
             if (input[0] != 's' && input[0] != 'p' && input[0] != 'e')
             {
-                cout << "Bitte wählen sie die vorgegeben Buchstaben" << endl;
+                cout << "Bitte wählen sie die vorgegebenen Buchstaben" << endl;
                 isValidInput = false;
             }
         }
@@ -108,10 +108,9 @@ void calcRootWithHeronDiff(std::stringstream &stringstream)
         if (calculatedPrecision < usrChoicePrecision)
         {
             cout << "x(" << i << ") = " << folge << "; Präzision: ";
-            flag = true;
-            cout << std::fixed << std::setprecision(input.size() + 1) << calculatedPrecision << std::defaultfloat
+            cout << std::fixed << std::setprecision(10) << calculatedPrecision << std::defaultfloat
                  << "\n";
-
+            flag = true;
         }
     }
 }
