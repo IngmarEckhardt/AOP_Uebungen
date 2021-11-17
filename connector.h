@@ -10,6 +10,12 @@
 namespace global
 {
     void Menu();
+
+    enum MenuChoice
+    {
+        AOP, EULER, BOTH
+    };
+
 }
 
 namespace service

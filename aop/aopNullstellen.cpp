@@ -20,12 +20,12 @@ namespace aop
 
         cout << "Nullstellenberechnung der Funktion ax²+bx+c" << endl;
 
-        std::string messageA = "Gib den Parameter a ein: ";
-        double a = service::getUserInputDouble(messageA);
-        std::string messageB = "Gib den Parameter b ein: ";
-        double b = service::getUserInputDouble(messageB);
-        std::string messageC = "Gib den Parameter b ein: ";
-        double c = service::getUserInputDouble(messageC);
+        std::string message = "Gib den Parameter a ein: ";
+        double a = service::getUserInputDouble(message);
+        message = "Gib den Parameter b ein: ";
+        double b = service::getUserInputDouble(message);
+        message = "Gib den Parameter b ein: ";
+        double c = service::getUserInputDouble(message);
 
 
         double diskriminante = pow(b, 2) - 4 * a * c;

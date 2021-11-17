@@ -8,6 +8,7 @@ namespace service {
         for (; number > 1; number--) fak *= number;
         return fak;
     }
+
     double ModuloPi(double input)
     {
         if (input > (2 * M_PI))
@@ -16,7 +17,8 @@ namespace service {
         }
         return input;
     }
- 1   unsigned long long int reverseNumber(unsigned long long int num, unsigned short int base)
+
+    unsigned long long int reverseNumber(unsigned long long int num, unsigned short int base)
     {
         int reversed = 0;
 
@@ -28,6 +30,7 @@ namespace service {
         }
         return reversed;
     }
+
     bool isPrime(unsigned long long int numberToCheck) {
         if (numberToCheck == 1) return false;
         if (numberToCheck == 2) return true;

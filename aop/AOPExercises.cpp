@@ -23,7 +23,7 @@ AOPExercises::AOPExercises(unsigned short int Number) {
             break;
         case 5:
             description = "Wurzelberechnung mit Heron-Verfahren";
-            action = &aop::HeronAlgorythm;
+            action = &aop::SquareRootWithHeronAlgo;
             break;
         case 6:
             description = "Cosinusfunktion ohne cos oder Fakultät";

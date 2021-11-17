@@ -14,7 +14,7 @@ namespace aop {
     std::string multiplicationTable();
     std::string nullstellen();
     std::string fibonacci();
-    std::string HeronAlgorythm();
+    std::string SquareRootWithHeronAlgo();
     std::string CosinusWithLoop();
     std::string SinusWithLoop();
 

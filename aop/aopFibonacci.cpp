@@ -13,7 +13,7 @@ namespace aop
 
     std::string fibonacci()
     {
-        std::string askUserForInp = "Es werden die Fibonacci-Zahlen ausgegeben, wähle wieviele davon ausgegeben werden sollen:";
+        std::string askUserForInp = "Es werden die Fibonacci-Zahlen ausgegeben, wähle wieviele davon ausgegeben werden sollen:\n";
         std::stringstream stringstream;
         bool exitMenu = false, isYesOrNo = false;
 

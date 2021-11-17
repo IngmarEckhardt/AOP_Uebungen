@@ -1,4 +1,3 @@
-
 #ifndef AOP_UEBUNGEN_EXERCISES_H
 #define AOP_UEBUNGEN_EXERCISES_H
 #include <string>
@@ -16,8 +15,6 @@ protected:
     std::function<std::string()> action;
     unsigned short int idNumber;
     std::string description;
-
 };
-
 
 #endif //AOP_UEBUNGEN_EXERCISES_H
